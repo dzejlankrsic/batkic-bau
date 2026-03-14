@@ -96,7 +96,7 @@ Generated React Query hooks and fetch client from the OpenAPI spec (e.g. `useHea
 React + Vite single-page brochure website for **BATKIC BAU GmbH**, a German construction company. All text is in German.
 
 - **Sections**: Hero, Über uns (About), Leistungen (Services), Projekte (Gallery with lightbox), Kontakt (Contact form), Footer
-- **Features**: Smooth scroll navigation, framer-motion animations, responsive design, project photo gallery with lightbox (44 images), contact form with validation
+- **Features**: Smooth scroll navigation, framer-motion animations, responsive design, project photo gallery with category filters (Terrassenbau, Stützmauern, Badsanierung, Innenausbau) and lightbox with prev/next navigation (44 images), contact form with validation
 - **Key dependencies**: framer-motion, react-hook-form, @hookform/resolvers, zod, lucide-react
 - **Project images**: 44 construction photos in `public/projects/project-1.jpeg` through `project-44.jpeg`
 - **Color theme**: Dark charcoal with amber/orange accents (construction company branding)
