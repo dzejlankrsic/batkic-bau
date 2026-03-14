@@ -6,8 +6,8 @@ import { Button } from "./ui/button";
 type Category = "Alle" | "Terrassenbau" | "Stützmauern" | "Badsanierung" | "Innenausbau";
 
 const categoryMap: Record<Exclude<Category, "Alle">, number[]> = {
-  Terrassenbau: [1, 2, 3, 8, 9, 23, 24, 27, 28, 29, 30, 32, 34, 35, 36, 40, 41, 42, 44],
-  Stützmauern: [4, 5, 6, 7, 10, 12, 13, 22, 31, 33, 37, 43],
+  Terrassenbau: [1, 2, 3, 8, 9, 23, 24, 27, 28, 29, 30, 32, 34, 35, 36, 40, 41, 42, 44, 47],
+  Stützmauern: [4, 5, 6, 7, 10, 12, 13, 22, 31, 33, 37, 43, 45, 46, 48],
   Badsanierung: [11, 19, 20, 21, 25, 26, 38, 39],
   Innenausbau: [14, 15, 16, 17, 18],
 };
@@ -20,7 +20,7 @@ const categoryLabels: Record<Category, string> = {
   Innenausbau: "Innenausbau",
 };
 
-const allProjects = Array.from({ length: 44 }, (_, i) => ({
+const allProjects = Array.from({ length: 48 }, (_, i) => ({
   id: i + 1,
   url: `${import.meta.env.BASE_URL}projects/project-${i + 1}.jpeg`,
 }));
