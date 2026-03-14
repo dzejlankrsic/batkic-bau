@@ -1,0 +1,11 @@
+packages:
+  "framer-motion": "For premium scroll animations and lightbox gallery effects"
+  "react-hook-form": "For robust contact form handling"
+  "@hookform/resolvers": "Zod validation integration for the contact form"
+  "zod": "Schema validation for the contact form"
+  "clsx": "Utility for constructing className strings conditionally"
+  "tailwind-merge": "Utility to efficiently merge Tailwind CSS classes"
+
+notes:
+  - Frontend-only site, no real backend endpoints. Contact form will simulate submission.
+  - Image assets are located in public/projects/ (project-1.jpeg to project-44.jpeg).

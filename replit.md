@@ -91,6 +91,19 @@ Generated Zod schemas from the OpenAPI spec (e.g. `HealthCheckResponse`). Used b
 
 Generated React Query hooks and fetch client from the OpenAPI spec (e.g. `useHealthCheck`, `healthCheck`).
 
+### `artifacts/batkic-bau` (`@workspace/batkic-bau`)
+
+React + Vite single-page brochure website for **BATKIC BAU GmbH**, a German construction company. All text is in German.
+
+- **Sections**: Hero, Über uns (About), Leistungen (Services), Projekte (Gallery with lightbox), Kontakt (Contact form), Footer
+- **Features**: Smooth scroll navigation, framer-motion animations, responsive design, project photo gallery with lightbox (44 images), contact form with validation
+- **Key dependencies**: framer-motion, react-hook-form, @hookform/resolvers, zod, lucide-react
+- **Project images**: 44 construction photos in `public/projects/project-1.jpeg` through `project-44.jpeg`
+- **Color theme**: Dark charcoal with amber/orange accents (construction company branding)
+- **Font**: Barlow Condensed for display text, Inter for body text
+- **No backend required** — purely frontend brochure site
+- Preview path: `/`
+
 ### `scripts` (`@workspace/scripts`)
 
 Utility scripts package. Each script is a `.ts` file in `src/` with a corresponding npm script in `package.json`. Run scripts via `pnpm --filter @workspace/scripts run <script>`. Scripts can import any workspace package (e.g., `@workspace/db`) by adding it as a dependency in `scripts/package.json`.
