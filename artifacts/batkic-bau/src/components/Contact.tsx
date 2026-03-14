@@ -80,7 +80,7 @@ export function Contact() {
                 </div>
                 <div>
                   <h4 className="font-bold text-foreground uppercase tracking-wide font-display">Telefon</h4>
-                  <p className="text-muted-foreground mt-1">0157 33355585</p>
+                  <p className="text-muted-foreground mt-1">+49 157 3335 5585</p>
                 </div>
               </div>
               
