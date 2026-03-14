@@ -36,71 +36,61 @@ export function Contact() {
     setIsSubmitted(true);
     reset();
     
-    // Hide success message after 5 seconds
     setTimeout(() => setIsSubmitted(false), 5000);
   };
 
   return (
-    <section id="contact" className="py-24 bg-muted relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+    <section id="contact" className="py-32 bg-secondary/50">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
           
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="space-y-10"
+            className="space-y-12"
           >
             <div>
-              <h2 className="text-primary font-bold tracking-widest uppercase text-sm mb-2">Kontakt</h2>
-              <h3 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-4">
-                LASSEN SIE UNS SPRECHEN
-              </h3>
-              <div className="w-20 h-1.5 bg-primary mb-6" />
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                Haben Sie ein konkretes Projekt im Kopf oder benötigen Sie fachkundige Beratung? Zögern Sie nicht, uns zu kontaktieren. Wir erstellen Ihnen gerne ein unverbindliches Angebot.
+              <span className="text-primary font-sans text-xs uppercase tracking-[0.2em] mb-4 block">
+                Kontakt
+              </span>
+              <h2 className="text-3xl md:text-4xl font-display text-foreground font-light mb-6">
+                Ihr Weg zu uns.
+              </h2>
+              <p className="text-muted-foreground font-light leading-relaxed max-w-md">
+                Lassen Sie uns über Ihr nächstes Projekt sprechen. Wir beraten Sie umfassend und erarbeiten maßgeschneiderte Lösungen für Ihre Anforderungen.
               </p>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-8">
               <div className="flex items-start">
-                <div className="w-12 h-12 bg-card border border-border flex items-center justify-center shrink-0 mr-4 shadow-sm">
-                  <MapPin className="text-primary" size={24} />
+                <div className="text-primary mt-1 mr-6">
+                  <MapPin size={24} strokeWidth={1} />
                 </div>
                 <div>
-                  <h4 className="font-bold text-foreground uppercase tracking-wide font-display">Adresse</h4>
-                  <p className="text-muted-foreground mt-1">Musterstraße 1<br />12345 Musterstadt</p>
+                  <h4 className="text-sm font-sans uppercase tracking-widest text-foreground mb-1">Standort</h4>
+                  <p className="text-muted-foreground font-light">Musterstraße 1<br />12345 Musterstadt</p>
                 </div>
               </div>
               
               <div className="flex items-start">
-                <div className="w-12 h-12 bg-card border border-border flex items-center justify-center shrink-0 mr-4 shadow-sm">
-                  <Phone className="text-primary" size={24} />
+                <div className="text-primary mt-1 mr-6">
+                  <Phone size={24} strokeWidth={1} />
                 </div>
                 <div>
-                  <h4 className="font-bold text-foreground uppercase tracking-wide font-display">Telefon</h4>
-                  <p className="text-muted-foreground mt-1">+49 (0) 123 4567890</p>
+                  <h4 className="text-sm font-sans uppercase tracking-widest text-foreground mb-1">Telefon</h4>
+                  <p className="text-muted-foreground font-light">+49 (0) 123 4567890</p>
                 </div>
               </div>
               
               <div className="flex items-start">
-                <div className="w-12 h-12 bg-card border border-border flex items-center justify-center shrink-0 mr-4 shadow-sm">
-                  <Mail className="text-primary" size={24} />
+                <div className="text-primary mt-1 mr-6">
+                  <Mail size={24} strokeWidth={1} />
                 </div>
                 <div>
-                  <h4 className="font-bold text-foreground uppercase tracking-wide font-display">E-Mail</h4>
-                  <p className="text-muted-foreground mt-1">info@batkic-bau.de</p>
-                </div>
-              </div>
-
-              <div className="flex items-start">
-                <div className="w-12 h-12 bg-card border border-border flex items-center justify-center shrink-0 mr-4 shadow-sm">
-                  <Clock className="text-primary" size={24} />
-                </div>
-                <div>
-                  <h4 className="font-bold text-foreground uppercase tracking-wide font-display">Bürozeiten</h4>
-                  <p className="text-muted-foreground mt-1">Mo - Fr: 07:00 - 17:00 Uhr<br />Sa: nach Vereinbarung</p>
+                  <h4 className="text-sm font-sans uppercase tracking-widest text-foreground mb-1">E-Mail</h4>
+                  <p className="text-muted-foreground font-light">info@batkic-bau.de</p>
                 </div>
               </div>
             </div>
@@ -112,70 +102,68 @@ export function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="bg-card p-8 shadow-xl border border-border relative overflow-hidden"
+            className="bg-white p-10 md:p-12 shadow-sm"
           >
-            <div className="absolute top-0 left-0 w-full h-2 bg-primary" />
-            
-            <h4 className="text-2xl font-display font-bold text-foreground mb-6 uppercase tracking-wide">
-              Schreiben Sie uns
-            </h4>
-
             {isSubmitted ? (
               <motion.div 
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="bg-green-50 text-green-800 p-6 rounded border border-green-200 text-center"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="h-full flex flex-col items-center justify-center text-center space-y-4"
               >
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                <div className="w-16 h-16 border border-primary rounded-full flex items-center justify-center text-primary mb-4">
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h5 className="font-bold text-lg mb-2">Vielen Dank für Ihre Nachricht!</h5>
-                <p>Wir haben Ihre Anfrage erhalten und werden uns schnellstmöglich bei Ihnen melden.</p>
+                <h5 className="font-display text-xl">Vielen Dank.</h5>
+                <p className="text-muted-foreground font-light">Ihre Anfrage wurde erfolgreich übermittelt. Wir setzen uns umgehend mit Ihnen in Verbindung.</p>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <div>
                   <Input 
-                    placeholder="Ihr Name" 
+                    placeholder="Name" 
                     {...register("name")}
-                    className={errors.name ? "border-destructive" : ""}
+                    className={`rounded-none border-b-2 border-t-0 border-l-0 border-r-0 bg-transparent px-0 focus-visible:ring-0 focus-visible:border-primary ${errors.name ? "border-destructive" : "border-border"}`}
                   />
-                  {errors.name && <p className="text-destructive text-sm mt-1">{errors.name.message}</p>}
+                  {errors.name && <p className="text-destructive text-xs mt-2">{errors.name.message}</p>}
                 </div>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <Input 
-                      placeholder="E-Mail Adresse" 
+                      placeholder="E-Mail" 
                       type="email"
                       {...register("email")}
-                      className={errors.email ? "border-destructive" : ""}
+                      className={`rounded-none border-b-2 border-t-0 border-l-0 border-r-0 bg-transparent px-0 focus-visible:ring-0 focus-visible:border-primary ${errors.email ? "border-destructive" : "border-border"}`}
                     />
-                    {errors.email && <p className="text-destructive text-sm mt-1">{errors.email.message}</p>}
+                    {errors.email && <p className="text-destructive text-xs mt-2">{errors.email.message}</p>}
                   </div>
                   <div>
                     <Input 
-                      placeholder="Telefonnummer" 
+                      placeholder="Telefon" 
                       {...register("phone")}
-                      className={errors.phone ? "border-destructive" : ""}
+                      className={`rounded-none border-b-2 border-t-0 border-l-0 border-r-0 bg-transparent px-0 focus-visible:ring-0 focus-visible:border-primary ${errors.phone ? "border-destructive" : "border-border"}`}
                     />
-                    {errors.phone && <p className="text-destructive text-sm mt-1">{errors.phone.message}</p>}
+                    {errors.phone && <p className="text-destructive text-xs mt-2">{errors.phone.message}</p>}
                   </div>
                 </div>
 
                 <div>
                   <Textarea 
-                    placeholder="Ihre Nachricht / Projektbeschreibung" 
+                    placeholder="Ihre Nachricht" 
                     {...register("message")}
-                    className={errors.message ? "border-destructive" : ""}
+                    className={`rounded-none border-b-2 border-t-0 border-l-0 border-r-0 bg-transparent px-0 resize-none min-h-[120px] focus-visible:ring-0 focus-visible:border-primary ${errors.message ? "border-destructive" : "border-border"}`}
                   />
-                  {errors.message && <p className="text-destructive text-sm mt-1">{errors.message.message}</p>}
+                  {errors.message && <p className="text-destructive text-xs mt-2">{errors.message.message}</p>}
                 </div>
 
-                <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
-                  {isSubmitting ? "Wird gesendet..." : "Nachricht absenden"}
+                <Button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="w-full rounded-none bg-foreground hover:bg-foreground/90 text-white uppercase tracking-widest text-xs py-6 mt-4"
+                >
+                  {isSubmitting ? "Wird gesendet..." : "Anfrage senden"}
                 </Button>
               </form>
             )}
