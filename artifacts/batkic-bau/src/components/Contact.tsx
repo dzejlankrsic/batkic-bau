@@ -8,17 +8,33 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 
+const serviceOptions = [
+  "Erdarbeiten",
+  "Betonarbeiten",
+  "Maurerarbeiten",
+  "Terrassen- & Pflasterbau",
+  "Badsanierung",
+  "Abdichtungsarbeiten",
+  "Stützmauern",
+  "Zaunbau",
+  "Sonstiges",
+];
+
 const formSchema = z.object({
   name: z.string().min(2, "Bitte geben Sie einen Namen ein."),
   email: z.string().email("Bitte geben Sie eine gültige E-Mail Adresse ein."),
   phone: z.string().min(6, "Bitte geben Sie eine Telefonnummer ein."),
+  service: z.string().min(1, "Bitte wählen Sie eine Leistung aus."),
   message: z.string().min(10, "Ihre Nachricht muss mindestens 10 Zeichen lang sein."),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
+const WEB3FORMS_KEY = "ff98c5c9-7463-4ba2-8c33-0ab49ea16b1e";
+
 export function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const {
     register,
@@ -27,17 +43,42 @@ export function Contact() {
     reset
   } = useForm<FormValues>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      service: "",
+    },
   });
 
   const onSubmit = async (data: FormValues) => {
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    console.log("Form submitted:", data);
-    setIsSubmitted(true);
-    reset();
-    
-    // Hide success message after 5 seconds
-    setTimeout(() => setIsSubmitted(false), 5000);
+    setSubmitError(null);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `Neue Anfrage von ${data.name} – BATKIC BAU`,
+          from_name: "BATKIC BAU Webseite",
+          Name: data.name,
+          "E-Mail": data.email,
+          Telefon: data.phone,
+          Leistung: data.service,
+          Nachricht: data.message,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setIsSubmitted(true);
+        reset();
+        setTimeout(() => setIsSubmitted(false), 5000);
+      } else {
+        setSubmitError("Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut.");
+      }
+    } catch {
+      setSubmitError("Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.");
+    }
   };
 
   return (
@@ -45,7 +86,6 @@ export function Contact() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           
-          {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -106,7 +146,6 @@ export function Contact() {
             </div>
           </motion.div>
 
-          {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -166,6 +205,22 @@ export function Contact() {
                 </div>
 
                 <div>
+                  <select
+                    {...register("service")}
+                    className={`flex h-10 w-full rounded-md border bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
+                      errors.service ? "border-destructive" : "border-input"
+                    }`}
+                    defaultValue=""
+                  >
+                    <option value="" disabled>Gewünschte Leistung auswählen</option>
+                    {serviceOptions.map((s) => (
+                      <option key={s} value={s}>{s}</option>
+                    ))}
+                  </select>
+                  {errors.service && <p className="text-destructive text-sm mt-1">{errors.service.message}</p>}
+                </div>
+
+                <div>
                   <Textarea 
                     placeholder="Ihre Nachricht / Projektbeschreibung" 
                     {...register("message")}
@@ -173,6 +228,10 @@ export function Contact() {
                   />
                   {errors.message && <p className="text-destructive text-sm mt-1">{errors.message.message}</p>}
                 </div>
+
+                {submitError && (
+                  <p className="text-destructive text-sm">{submitError}</p>
+                )}
 
                 <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
                   {isSubmitting ? "Wird gesendet..." : "Nachricht absenden"}
