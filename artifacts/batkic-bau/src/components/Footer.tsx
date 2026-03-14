@@ -39,8 +39,8 @@ export function Footer() {
               Ihr kompetenter Baupartner für anspruchsvolle Projekte. Wir bauen auf Qualität, Erfahrung und Zuverlässigkeit.
             </p>
             <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-2 sm:space-y-0 text-white/60">
-              <span className="flex items-center"><MapPin className="w-4 h-4 mr-2 shrink-0" /> Musterstadt</span>
-              <span className="flex items-center"><Phone className="w-4 h-4 mr-2 shrink-0" /> +49 123 4567890</span>
+              <span className="flex items-center"><MapPin className="w-4 h-4 mr-2 shrink-0" /> Dettenhausen</span>
+              <span className="flex items-center"><Phone className="w-4 h-4 mr-2 shrink-0" /> 0157 33355585</span>
             </div>
           </div>
 
