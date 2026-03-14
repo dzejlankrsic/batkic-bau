@@ -38,9 +38,9 @@ export function Footer() {
             <p className="text-white/60 mb-6 max-w-sm leading-relaxed">
               Ihr kompetenter Baupartner für anspruchsvolle Projekte. Wir bauen auf Qualität, Erfahrung und Zuverlässigkeit.
             </p>
-            <div className="flex space-x-4 text-white/60">
-              <span className="flex items-center"><MapPin className="w-4 h-4 mr-2" /> Musterstadt</span>
-              <span className="flex items-center"><Phone className="w-4 h-4 mr-2" /> +49 123 4567890</span>
+            <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-2 sm:space-y-0 text-white/60">
+              <span className="flex items-center"><MapPin className="w-4 h-4 mr-2 shrink-0" /> Musterstadt</span>
+              <span className="flex items-center"><Phone className="w-4 h-4 mr-2 shrink-0" /> +49 123 4567890</span>
             </div>
           </div>
 
