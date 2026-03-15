@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "./ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLocation } from "wouter";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [location, setLocation] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,22 +25,36 @@ export function Navbar() {
     { name: "Kontakt", href: "#contact" },
   ];
 
-  const isHome = window.location.pathname === import.meta.env.BASE_URL || window.location.pathname === import.meta.env.BASE_URL.replace(/\/$/, "");
-
-  const scrollTo = (href: string) => {
-    setMobileMenuOpen(false);
-    if (!isHome) {
-      window.location.href = href === "#" ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}${href}`;
-      return;
-    }
-    if (href === "#") {
+  const scrollToElement = (hash: string) => {
+    if (hash === "#") {
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
-    const element = document.querySelector(href);
+    const element = document.querySelector(hash);
     if (element) {
       const offsetTop = element.getBoundingClientRect().top + window.scrollY - 80;
       window.scrollTo({ top: offsetTop, behavior: "smooth" });
+    }
+  };
+
+  const handleNavClick = (href: string) => {
+    setMobileMenuOpen(false);
+
+    if (location === "/") {
+      scrollToElement(href);
+    } else {
+      setLocation("/");
+      const hash = href === "#" ? "" : href;
+      if (hash) {
+        window.location.hash = hash;
+      }
+      setTimeout(() => {
+        if (hash) {
+          scrollToElement(hash);
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, 200);
     }
   };
 
@@ -54,7 +70,7 @@ export function Navbar() {
         <div className="flex justify-between items-center">
           <div 
             className="cursor-pointer group-hover:opacity-90 transition-opacity"
-            onClick={() => scrollTo("#")}
+            onClick={() => handleNavClick("#")}
           >
             <img 
               src={`${import.meta.env.BASE_URL}logo-white.svg`} 
@@ -63,19 +79,18 @@ export function Navbar() {
             />
           </div>
 
-          {/* Desktop Nav */}
           <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <button
                 key={link.name}
-                onClick={() => scrollTo(link.href)}
+                onClick={() => handleNavClick(link.href)}
                 className="text-white/90 hover:text-primary font-medium text-sm transition-colors uppercase tracking-wider font-display"
               >
                 {link.name}
               </button>
             ))}
             <Button 
-              onClick={() => scrollTo("#contact")}
+              onClick={() => handleNavClick("#contact")}
               className="hidden lg:flex"
             >
               <Phone className="w-4 h-4 mr-2" />
@@ -83,7 +98,6 @@ export function Navbar() {
             </Button>
           </nav>
 
-          {/* Mobile Menu Button */}
           <button
             className="md:hidden text-white p-2"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -93,7 +107,6 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Nav */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
@@ -106,13 +119,13 @@ export function Navbar() {
               {navLinks.map((link) => (
                 <button
                   key={link.name}
-                  onClick={() => scrollTo(link.href)}
+                  onClick={() => handleNavClick(link.href)}
                   className="text-left text-white/90 hover:text-primary font-display text-xl uppercase tracking-wider py-2 border-b border-white/5"
                 >
                   {link.name}
                 </button>
               ))}
-              <Button onClick={() => scrollTo("#contact")} className="w-full mt-4">
+              <Button onClick={() => handleNavClick("#contact")} className="w-full mt-4">
                 <Phone className="w-4 h-4 mr-2" />
                 Kontakt aufnehmen
               </Button>
