@@ -58,7 +58,7 @@ export function Contact() {
         body: JSON.stringify({
           access_key: WEB3FORMS_KEY,
           subject: `Neue Anfrage von ${data.name} – BATKIC BAU`,
-          from_name: "BATKIC BAU Webseite",
+          from_name: "BATKIC BAU Webseite (Kontaktformular)",
           Name: data.name,
           "E-Mail": data.email,
           Telefon: data.phone,
