@@ -1,17 +1,39 @@
-import { MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone } from "lucide-react";
+import { useLocation } from "wouter";
+import { Link } from "wouter";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const [location, setLocation] = useLocation();
 
-  const scrollTo = (href: string) => {
-    if (href === "#") {
+  const scrollToElement = (hash: string) => {
+    if (hash === "#") {
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
-    const element = document.querySelector(href);
+    const element = document.querySelector(hash);
     if (element) {
       const offsetTop = element.getBoundingClientRect().top + window.scrollY - 80;
       window.scrollTo({ top: offsetTop, behavior: "smooth" });
+    }
+  };
+
+  const handleNavClick = (href: string) => {
+    if (location === "/") {
+      scrollToElement(href);
+    } else {
+      setLocation("/");
+      const hash = href === "#" ? "" : href;
+      if (hash) {
+        window.location.hash = hash;
+      }
+      setTimeout(() => {
+        if (hash) {
+          scrollToElement(hash);
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, 200);
     }
   };
 
@@ -37,24 +59,22 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h4 className="font-display font-bold text-xl uppercase tracking-wider mb-6">Navigation</h4>
             <ul className="space-y-3">
-              <li><button onClick={() => scrollTo("#")} className="text-white/60 hover:text-primary transition-colors">Startseite</button></li>
-              <li><button onClick={() => scrollTo("#about")} className="text-white/60 hover:text-primary transition-colors">Über uns</button></li>
-              <li><button onClick={() => scrollTo("#services")} className="text-white/60 hover:text-primary transition-colors">Leistungen</button></li>
-              <li><button onClick={() => scrollTo("#projects")} className="text-white/60 hover:text-primary transition-colors">Referenzen</button></li>
-              <li><button onClick={() => scrollTo("#contact")} className="text-white/60 hover:text-primary transition-colors">Kontakt</button></li>
+              <li><button onClick={() => handleNavClick("#")} className="text-white/60 hover:text-primary transition-colors">Startseite</button></li>
+              <li><button onClick={() => handleNavClick("#about")} className="text-white/60 hover:text-primary transition-colors">Über uns</button></li>
+              <li><button onClick={() => handleNavClick("#services")} className="text-white/60 hover:text-primary transition-colors">Leistungen</button></li>
+              <li><button onClick={() => handleNavClick("#projects")} className="text-white/60 hover:text-primary transition-colors">Referenzen</button></li>
+              <li><button onClick={() => handleNavClick("#contact")} className="text-white/60 hover:text-primary transition-colors">Kontakt</button></li>
             </ul>
           </div>
 
-          {/* Legal */}
           <div>
             <h4 className="font-display font-bold text-xl uppercase tracking-wider mb-6">Rechtliches</h4>
             <ul className="space-y-3">
-              <li><a href={`${import.meta.env.BASE_URL}impressum`} className="text-white/60 hover:text-primary transition-colors">Impressum</a></li>
-              <li><a href={`${import.meta.env.BASE_URL}datenschutz`} className="text-white/60 hover:text-primary transition-colors">Datenschutz</a></li>
+              <li><Link href="/impressum" className="text-white/60 hover:text-primary transition-colors">Impressum</Link></li>
+              <li><Link href="/datenschutz" className="text-white/60 hover:text-primary transition-colors">Datenschutz</Link></li>
             </ul>
           </div>
 
