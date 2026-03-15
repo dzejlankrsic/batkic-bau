@@ -51,7 +51,7 @@ export function Navbar() {
             onClick={() => scrollTo("#")}
           >
             <img 
-              src={`${import.meta.env.BASE_URL}logo-dark.svg`} 
+              src={`${import.meta.env.BASE_URL}logo-white.svg`} 
               alt="BATKIC BAU GmbH" 
               className="h-12 w-auto"
             />

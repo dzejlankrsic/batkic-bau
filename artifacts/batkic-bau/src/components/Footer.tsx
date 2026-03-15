@@ -23,7 +23,7 @@ export function Footer() {
           <div className="col-span-1 lg:col-span-2">
             <div className="mb-6">
               <img 
-                src={`${import.meta.env.BASE_URL}logo-dark.svg`} 
+                src={`${import.meta.env.BASE_URL}logo-white.svg`} 
                 alt="BATKIC BAU GmbH" 
                 className="h-14 w-auto"
               />
