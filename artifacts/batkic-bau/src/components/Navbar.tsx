@@ -23,8 +23,14 @@ export function Navbar() {
     { name: "Kontakt", href: "#contact" },
   ];
 
+  const isHome = window.location.pathname === import.meta.env.BASE_URL || window.location.pathname === import.meta.env.BASE_URL.replace(/\/$/, "");
+
   const scrollTo = (href: string) => {
     setMobileMenuOpen(false);
+    if (!isHome) {
+      window.location.href = href === "#" ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}${href}`;
+      return;
+    }
     if (href === "#") {
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
