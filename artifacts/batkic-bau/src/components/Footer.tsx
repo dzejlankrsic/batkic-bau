@@ -20,20 +20,13 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           
-          {/* Brand Info */}
           <div className="col-span-1 lg:col-span-2">
-            <div className="flex items-center mb-6">
-              <div className="w-10 h-10 bg-primary flex items-center justify-center font-display font-bold text-xl text-primary-foreground mr-3 shadow-lg">
-                BB
-              </div>
-              <div className="flex flex-col">
-                <span className="font-display text-2xl font-bold leading-none text-white">
-                  BATKIC BAU
-                </span>
-                <span className="text-[10px] text-primary font-bold tracking-[0.2em] uppercase">
-                  GmbH
-                </span>
-              </div>
+            <div className="mb-6">
+              <img 
+                src={`${import.meta.env.BASE_URL}logo-dark.svg`} 
+                alt="BATKIC BAU GmbH" 
+                className="h-14 w-auto"
+              />
             </div>
             <p className="text-white/60 mb-6 max-w-sm leading-relaxed">
               Ihr kompetenter Baupartner für anspruchsvolle Projekte. Wir bauen auf Qualität, Erfahrung und Zuverlässigkeit.

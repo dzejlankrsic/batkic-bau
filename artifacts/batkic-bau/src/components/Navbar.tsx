@@ -46,22 +46,15 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          {/* Logo */}
           <div 
-            className="flex items-center cursor-pointer group"
+            className="cursor-pointer group-hover:opacity-90 transition-opacity"
             onClick={() => scrollTo("#")}
           >
-            <div className="w-10 h-10 bg-primary flex items-center justify-center font-display font-bold text-xl text-primary-foreground mr-3 shadow-lg group-hover:scale-105 transition-transform">
-              BB
-            </div>
-            <div className="flex flex-col">
-              <span className={`font-display text-2xl font-bold leading-none ${isScrolled ? "text-white" : "text-white"}`}>
-                BATKIC BAU
-              </span>
-              <span className="text-[10px] text-primary font-bold tracking-[0.2em] uppercase">
-                GmbH
-              </span>
-            </div>
+            <img 
+              src={`${import.meta.env.BASE_URL}logo-dark.svg`} 
+              alt="BATKIC BAU GmbH" 
+              className="h-12 w-auto"
+            />
           </div>
 
           {/* Desktop Nav */}
