@@ -53,8 +53,8 @@ export function Footer() {
           <div>
             <h4 className="font-display font-bold text-xl uppercase tracking-wider mb-6">Rechtliches</h4>
             <ul className="space-y-3">
-              <li><a href="#" className="text-white/60 hover:text-primary transition-colors">Impressum</a></li>
-              <li><a href="#" className="text-white/60 hover:text-primary transition-colors">Datenschutz</a></li>
+              <li><a href={`${import.meta.env.BASE_URL}impressum`} className="text-white/60 hover:text-primary transition-colors">Impressum</a></li>
+              <li><a href={`${import.meta.env.BASE_URL}datenschutz`} className="text-white/60 hover:text-primary transition-colors">Datenschutz</a></li>
             </ul>
           </div>
 
