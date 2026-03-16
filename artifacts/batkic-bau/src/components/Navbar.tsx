@@ -73,7 +73,7 @@ export function Navbar() {
             onClick={() => handleNavClick("#")}
           >
             <img 
-              src={`${import.meta.env.BASE_URL}logo-white.svg`} 
+              src={`${import.meta.env.BASE_URL}logo-original.png`} 
               alt="BATKIC BAU GmbH" 
               className="h-20 w-auto -my-4"
             />

@@ -25,7 +25,7 @@ export function Hero() {
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
         style={{ 
-          backgroundImage: `url(${import.meta.env.BASE_URL}hero.png)`,
+          backgroundImage: `url(${import.meta.env.BASE_URL}logo-original.png)`,
         }}
       >
         {/* Dark overlay with slight gradient */}
