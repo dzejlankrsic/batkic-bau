@@ -23,7 +23,7 @@ export function Hero() {
     <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div 
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 z-0 bg-contain bg-center bg-no-repeat"
         style={{ 
           backgroundImage: `url(${import.meta.env.BASE_URL}logo-original.png)`,
         }}
