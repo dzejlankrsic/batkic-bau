@@ -75,7 +75,7 @@ export function Navbar() {
             <img 
               src={`${import.meta.env.BASE_URL}logo-original.png`} 
               alt="BATKIC BAU GmbH" 
-              className="h-20 w-auto -my-4"
+              className="h-16 w-auto -my-4"
             />
           </div>
 
