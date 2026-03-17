@@ -29,7 +29,7 @@ export function Hero() {
         }}
       >
         {/* Dark overlay with slight gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-secondary/80 via-secondary/60 to-secondary/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-secondary/80 via-secondary/50 to-secondary/40" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col items-start pt-20">
