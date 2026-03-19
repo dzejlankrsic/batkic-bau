@@ -41,7 +41,7 @@ jobs:
         # BASE_PATH must match your GitHub repo name exactly, e.g. /batkic-bau/
         # If you use a custom domain (CNAME), set BASE_PATH to /
         env:
-          BASE_PATH: /batkic-bau/
+          BASE_PATH: /
           NODE_ENV: production
         run: pnpm --filter @workspace/batkic-bau run build
 
